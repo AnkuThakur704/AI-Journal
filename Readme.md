@@ -8,7 +8,7 @@ The system stores journal entries, analyzes emotions using Google Gemini, and ge
 ## Live Demo
 
 **Frontend:**  
-https://ai-journal-frontend-fy4o26sw5-ankuthakur704s-projects.vercel.app
+https://ai-journal-frontend-rust.vercel.app
 
 **Backend API:**  
 https://ai-journal-backend-sq5v.onrender.com
