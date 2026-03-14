@@ -106,6 +106,10 @@ app.get("/api/journal/insights/:userId", async (req, res) => {
     }
 })
 
+app.get("/",(req,res)=>{
+    res.status(200).send("Server Live")
+})
+
 app.listen(port || 8080, () => {
     console.log(`server live: http://localhost:8080`)
 })
