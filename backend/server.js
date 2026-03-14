@@ -7,7 +7,7 @@ dotenv.config()
 const port = process.env.PORT
 const app = express();
 app.use(cors({
-    origin: "*"
+    origin: "https://ai-journal-frontend-rust.vercel.app"
 }))
 app.use(express.json())
 
