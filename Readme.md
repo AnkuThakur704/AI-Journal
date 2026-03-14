@@ -5,7 +5,15 @@ This project is an AI-assisted journal system where users can write journal entr
 The system stores journal entries, analyzes emotions using Google Gemini, and generates insights about the user's mental state over time.
 
 ---
+## Live Demo
 
+**Frontend:**  
+https://your-frontend-url.vercel.app
+
+**Backend API:**  
+https://your-backend-url.onrender.com
+
+---
 # Features
 
 - Write and store journal entries
