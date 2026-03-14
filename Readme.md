@@ -37,99 +37,124 @@ LLM
 # Project Structure
 
 
-ai-journal/
-│
-├── frontend/ # React frontend
-│
-├── backend/ # Express backend
-│ ├── server.js
-│ ├── llm.js
-│ ├── db/
-│
-├── README.md
-└── ARCHITECTURE.md
-
+```
+├── 📁 backend
+│   ├── 📁 db
+│   │   └── 📄 dbSchema.js
+│   ├── ⚙️ .gitignore
+│   ├── 📄 llm.js
+│   ├── ⚙️ package-lock.json
+│   ├── ⚙️ package.json
+│   └── 📄 server.js
+├── 📁 frontend
+│   ├── 📁 public
+│   ├── 📁 src
+│   │   ├── 📁 assets
+│   │   ├── 🎨 App.css
+│   │   ├── 📄 App.jsx
+│   │   ├── 🎨 index.css
+│   │   └── 📄 main.jsx
+│   ├── ⚙️ .gitignore
+│   ├── 📄 eslint.config.js
+│   ├── 🌐 index.html
+│   ├── ⚙️ package-lock.json
+│   ├── ⚙️ package.json
+│   └── 📄 vite.config.js
+├── 📝 Architecture.md
+└── 📝 Readme.md
+```
 
 ---
 
-# Setup Instructions
+## Setup Instructions
 
-## 1. Clone the repository
+### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/AnkuThakur704/AI-Journal>
 cd ai-journal
-2. Install backend dependencies
+```
+### 2. Install backend dependencies
+```bash
 cd backend
 npm install
-3. Install frontend dependencies
+```
+### 3. Install frontend dependencies
+```bash
 cd ../frontend
 npm install
-4. Environment Variables
-
-Create a .env file in the backend folder.
+```
+### 4. Environment Variables
+```bash
+Create a .env file inside the backend folder.
 
 PORT=8080
 GEMINI_API_KEY=your_api_key
 MONGO_URI=your_mongodb_connection_string
-5. Run Backend
+```
+### 5. Run Backend
+```bash
 cd backend
 npm start
-
-Server runs at
-
+```
+### Server runs at:
+```bash
 http://localhost:8080
-6. Run Frontend
+```
+### 6. Run Frontend
+```bash
 cd frontend
 npm run dev
-API Endpoints
-Analyze Journal
+```
+## API Endpoints
+### Analyze Journal
 
 POST /api/journal/analyze
-
+```bash
 Request
-
 {
-"text": "I felt calm today after listening to the rain."
+  "text": "I felt calm today after listening to the rain."
 }
-
+```
+```bash
 Response
-
 {
-"success": true,
-"result": {
-  "emotion": "calm",
-  "keywords": ["rain", "peace", "nature"],
-  "summary": "User experienced calm and relaxation."
+  "success": true,
+  "result": {
+    "emotion": "calm",
+    "keywords": ["rain", "peace", "nature"],
+    "summary": "User experienced calm and relaxation."
+  }
 }
-}
-Save Journal Entry
+```
+### Save Journal Entry
 
 POST /api/journal
-
+```bash
 Request
-
 {
-"userId": "123",
-"ambience": "forest",
-"text": "I felt calm today after listening to the rain.",
-"result": {
-  "emotion": "calm",
-  "keywords": ["rain", "peace", "nature"],
-  "summary": "User experienced calm."
+  "userId": "123",
+  "ambience": "forest",
+  "text": "I felt calm today after listening to the rain.",
+  "result": {
+    "emotion": "calm",
+    "keywords": ["rain", "peace", "nature"],
+    "summary": "User experienced calm."
+  }
 }
-}
-Get Journal Entries
+```
+### Get Journal Entries
 
 GET /api/journal/:userId
-
+```bash
 Returns all journal entries for a user.
+```
 
-Get Insights
+### Get Insights
 
 GET /api/journal/insights/:userId
-
-Returns
+```bash
+Returns:
 
 totalEntries
 
@@ -138,29 +163,52 @@ topEmotion
 mostUsedAmbience
 
 recentKeywords
+```
+## Deployment
 
-Deployment
+The **frontend and backend can be deployed separately**, allowing each service to scale and run independently.
 
-Frontend and backend can be deployed separately.
+### Example Setup
 
-Example setup:
+#### Frontend
+You can deploy the frontend on:
 
-Frontend
-Vercel / Netlify
+- **Vercel**
+- **Netlify**
 
-Backend
-Render / Railway
+#### Backend
+You can deploy the backend API on:
 
-The frontend communicates with the backend API using HTTP requests.
+- **Render**
+- **Railway**
 
-Future Improvements
+### Communication
 
-User authentication
+The frontend communicates with the backend through **HTTP API requests**.
 
-Emotion trend visualization
+Example:
 
-Caching LLM analysis results
+```javascript
+fetch("https://your-backend-url/api/journal")
+```
+## Future Improvements
 
-Rate limiting for API protection
+The current system provides the core functionality for journal analysis and insights.  
+Several enhancements can be implemented to improve scalability, security, and user experience.
 
-Background processing for analysis
+### Planned Enhancements
+
+- **User Authentication**  
+  Add secure login and account management to associate journal entries with authenticated users.
+
+- **Emotion Trend Visualization**  
+  Provide visual insights (charts/graphs) to help users track emotional patterns over time.
+
+- **Caching LLM Analysis Results**  
+  Cache previously analyzed journal entries to reduce LLM calls, lower costs, and improve response time.
+
+- **Rate Limiting for API Protection**  
+  Implement request limits to prevent abuse and protect the LLM API from excessive usage.
+
+- **Background Processing for Analysis**  
+  Move LLM analysis to background jobs using queues (e.g. Redis) to improve scalability and responsiveness.
